@@ -26,10 +26,7 @@ $(document).ready(function() {
       for(let i = 0; i < response.bikes.length; i++){
         // if(response.bikes[i].stolen_location == location && response.bikes[i].frame_colors == color && response.bikes[i].manufacturer_name == manufacture &&  response.bikes[i].date_stolen== date)
         // {
-          $('#location').append(response.bikes[i].stolen_location);
-          $('#color').append(response.bikes[i].frame_colors);
-          $('#manufacture').append(response.bikes[i].manufacturer_name);
-          $('#date').append(response.bikes[i].date_stolen);
+         $('#bike-requested-info').append("<strong>Location:</strong> " + response.bikes[i].stolen_location  + '<br>' + "<strong>Color:</strong> " + response.bikes[i].frame_colors +'<br>' + "<strong>Manufacture:</strong> " +  response.bikes[i].manufacturer_name + '<br>'+ "<strong>Date Stolen:</strong> " + Date(response.bikes[i].date_stolen) + '<hr>');
 
           $("#bike-requested-info").show();
         // }
