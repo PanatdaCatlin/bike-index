@@ -1,0 +1,7 @@
+body{
+  background-color: yellowgreen;
+}
+
+#bike-requested-info{
+  display: none;
+}
