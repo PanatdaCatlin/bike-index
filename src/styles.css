@@ -2,7 +2,11 @@ body{
   background-color: yellowgreen;
 }
 
-#bike-requested-info{
+#bike-results{
+  display: none;
+}
+
+#bike{
   display: none;
 }
 
@@ -10,4 +14,14 @@ img{
   border: 4px solid #f9f8ac;
   box-shadow: 4px 4px;
   margin: 2px;
+}
+
+h1{
+  text-align: center;
+}
+
+.jumbotron{
+  background-color: lightyellow;
+    margin-top: 6px;
+    padding: 2rem 2rem;
 }
