@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Bike Index</title>
-  <meta name="viewport" content="initial-scale=1.0">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <meta charset="utf-8">
 </head>
 <body>
@@ -14,8 +14,8 @@
       </div>
       <form class="" id="bike-info">
 
-        <label for="stolen-location">Enter your location:</label>
-        <input class="form-control" id="stolen-location" type="text" name="stolen-location">
+        <label for="address">Enter your location:</label>
+        <input class="form-control" id="address" type="text" name="address">
 
         <label for="bike-color">Enter your color:</label>
         <input class="form-control" id="bike-color" type="text" name="bike-color">
@@ -26,7 +26,7 @@
         <label for="bike-date">Select your date:</label>
         <input class="form-control "id="bike-date" type="date" name="bike-date">
         <br>
-        <button class="btn btn-info" type="submit" name="button">Submit</button>
+        <button class="btn btn-info" type="submit" name="button" id="submit">Submit</button>
       </form>
       <br>
     </div>
@@ -36,17 +36,39 @@
       <p>on average <span id="statistic-average-manufacturer"></span>% of <span id="selected-manufacturer"></span> bikes are stolen in a 25 mile radius from <span class="selected-city"></span>.</p></center>
       <button class="btn btn-info" id="change-location"><a href="/">Change Location</a></button>
     </div>
-    <div id="map"></div>
-    <script>
-    var map;
-    function initMap() {
-      map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: -34.397, lng: 150.644},
-        zoom: 8
-      });
-    }
-    </script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD3O1Wgzr3yZlsERIJ4-eUBgp_lFPIG4so&callback=initMap"></script>
+
+        <div id="map"></div>
+        <script>
+          function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 8,
+              center: {lat: -34.397, lng: 150.644}
+            });
+            var geocoder = new google.maps.Geocoder();
+
+            document.getElementById('submit').addEventListener('click', function() {
+              geocodeAddress(geocoder, map);
+            });
+          }
+
+          function geocodeAddress(geocoder, resultsMap) {
+            var address = document.getElementById('address').value;
+            geocoder.geocode({'address': address}, function(results, status) {
+              if (status === 'OK') {
+                resultsMap.setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                  map: resultsMap,
+                  position: results[0].geometry.location
+                });
+              } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+              }
+            });
+          }
+        </script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+        </script>
 
     <div id="bike-results"></div>
   </div>

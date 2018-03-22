@@ -10,12 +10,12 @@ $(document).ready(function() {
   $("#bike-info").submit(function(event){
     event.preventDefault();
 
-    let location = $("#stolen-location").val();
+    let location = $("#address").val();
     let color = $("#bike-color").val();
     let manufacture = $("#bike-manufacture").val();
     let date = $("#bike-date").val();
 
-    $('#stolen-location').val("");
+    $('#address').val("");
     $("#bike-color").val("");
     $("#bike-manufacture").val("");
     $("#bike-date").val("");
