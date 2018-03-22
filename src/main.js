@@ -20,7 +20,7 @@ $(document).ready(function() {
     $("#bike-manufacture").val("");
     $("#bike-date").val("");
 
-    $.get(`https://bikeindex.org:443/api/v3/search?page=1&per_page=25&location=${location}&distance=10&stolenness=proximity&access_token=process.env.API_KEY`).then(function(response) {
+    $.get(`https://bikeindex.org:443/api/v3/search?page=1&per_page=25&manufacturer=${manufacture}&location=${location}&distance=10&stolenness=proximity&access_token=process.env.API_KEY`).then(function(response) {
       console.log(response);
 
       for(let i = 0; i < response.bikes.length; i++){
