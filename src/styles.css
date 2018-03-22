@@ -34,3 +34,11 @@ a{
   float: right;
   padding: -2.6px;
 }
+
+#map {
+        height: 300px;
+        width:  300px;
+        display: none;
+        float: right;
+        box-shadow: 0 0 10px black;
+      }

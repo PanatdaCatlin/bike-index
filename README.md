@@ -16,3 +16,4 @@
 5. return statistics on which make of bike is most frequently stolen in the selected area
 6. return statistics on which color bike is most frequently stolen in the selected area
 7. add google maps
+8. if no results print "nothing matches search criteria"
